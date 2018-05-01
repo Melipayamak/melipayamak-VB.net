@@ -50,25 +50,25 @@ usersClient.GetUserNumbers(username, password)
 'بررسی تعداد پیامک های دریافتی
 soapClient.GetInboxCount(username, password, isRead)
 'ارسال پیامک پیشرفته
-soapClient.SendSms(username, password, to[], from, text, isflash, udh, recId[], status[])
+soapClient.SendSms(username, password, toNums[], from, text, isflash, udh, recId[], status[])
 'مشاهده مشخصات پیام
 receiveClient.GetMessagesReceptions(username, password, msgId, fromRows)
 'حذف پیام دریافتی
 receiveClient.RemoveMessages2(username, password, location, msgIds)
 'ارسال زماندار
-scheduleClient.AddSchedule(username, password, to, from, text, isflash, scheduleDateTime, period)
+scheduleClient.AddSchedule(username, password, toNum, from, text, isflash, scheduleDateTime, period)
 'ارسال زماندار متناظر
-scheduleClient.AddMultipleSchedule(username, password, to[], from, text[], isflash, scheduleDateTime[], period)
+scheduleClient.AddMultipleSchedule(username, password, toNums[], from, text[], isflash, scheduleDateTime[], period)
 'ارسال سررسید
-scheduleClient.AddNewUsance(username, password, to, from, text, isflash, scheduleStartDateTime, countRepeat, scheduleEndDateTime, periodType)
+scheduleClient.AddNewUsance(username, password, toNum, from, text, isflash, scheduleStartDateTime, countRepeat, scheduleEndDateTime, periodType)
 'مشاهده وضعیت ارسال زماندار
 scheduleClient.GetScheduleStatus(username, password, schId)
 'حذف پیامک زماندار
 scheduleClient.RemoveSchedule(username, password, schId)
 'ارسال پیامک همراه با تماس صوتی
-voiceClient.SendSMSWithSpeechText(username, password, smsBody, speechBody, from, to)
+voiceClient.SendSMSWithSpeechText(username, password, smsBody, speechBody, from, toNum)
 'ارسال پیامک همراه با تماس صوتی به صورت زمانبندی
-voiceClient.SendSMSWithSpeechTextBySchduleDate(username, password, smsBody, speechBody, from, to, scheduleDate)
+voiceClient.SendSMSWithSpeechTextBySchduleDate(username, password, smsBody, speechBody, from, toNum, scheduleDate)
 'دریافت وضعیت پیامک همراه با تماس صوتی
 voiceClient.GetSendSMSWithSpeechTextStatus(username, password, recId)
 
@@ -97,7 +97,7 @@ actionClient.GetTodaySent(username, password)
 ' حذف ارسال منطقه ای
 actionClient.RemoveBulk(username, password, bulkId)
 ' ارسال متناظر
-actionClient.SendMultipleSMS(username, password, to[], from, text[], isflash, udh, recId[], status)
+actionClient.SendMultipleSMS(username, password, toNums[], from, text[], isflash, udh, recId[], status)
 ' نمایش دهنده وضعیت گزارش گیری
 actionClient.UpdateBulkDelivery(username, password, bulkId)
 
