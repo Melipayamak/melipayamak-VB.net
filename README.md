@@ -205,7 +205,7 @@ soapClient.GetInboxCount(username, password, isRead)
 
 #### ارسال پیامک پیشرفته
 ```vb
-soapClient.SendSms(username, password, to[], from, text, isflash, udh, recId[], status[])
+soapClient.SendSms(username, password, toNums[], from, text, isflash, udh, recId[], status[])
 ```
 
 #### مشاهده مشخصات پیام
@@ -222,18 +222,18 @@ receiveSoapClient.RemoveMessages2(username, password, location, msgIds)
 
 #### ارسال زماندار
 ```vb
-scheduleSoapClient.AddSchedule(username, password, to, from, text, isflash, scheduleDateTime, period)
+scheduleSoapClient.AddSchedule(username, password, toNum, from, text, isflash, scheduleDateTime, period)
 ```
 
 #### ارسال زماندار متناظر
 ```vb
-scheduleSoapClient.AddMultipleSchedule(username, password, to[], from, text[], isflash, scheduleDateTime[], period)
+scheduleSoapClient.AddMultipleSchedule(username, password, toNums[], from, text[], isflash, scheduleDateTime[], period)
 ```
 
 
 #### ارسال سررسید
 ```vb
-scheduleSoapClient.AddNewUsance(username, password, to, from, text, isflash, scheduleStartDateTime, countRepeat, scheduleEndDateTime, periodType)
+scheduleSoapClient.AddNewUsance(username, password, toNum, from, text, isflash, scheduleStartDateTime, countRepeat, scheduleEndDateTime, periodType)
 ```
 
 #### مشاهده وضعیت ارسال زماندار
@@ -249,12 +249,12 @@ scheduleSoapClient.RemoveSchedule(username, password, schId)
 
 ####  ارسال پیامک همراه با تماس صوتی
 ```vb
-voiceSoapClient.SendSMSWithSpeechText(username, password, smsBody, speechBody, from, to)
+voiceSoapClient.SendSMSWithSpeechText(username, password, smsBody, speechBody, from, toNum)
 ```
 
 ####  ارسال پیامک همراه با تماس صوتی به صورت زمانبندی
 ```vb
-voiceSoapClient.SendSMSWithSpeechTextBySchduleDate(username, password, smsBody, speechBody, from, to, scheduleDate)
+voiceSoapClient.SendSMSWithSpeechTextBySchduleDate(username, password, smsBody, speechBody, from, toNum, scheduleDate)
 ```
 
 ####  دریافت وضعیت پیامک همراه با تماس صوتی 
@@ -327,7 +327,7 @@ actionSoapClient.RemoveBulk(username, password, bulkId)
 
 #### ارسال متناظر
 ```vb
-actionSoapClient.SendMultipleSMS(username, password, to[], from, text[], isflash, udh, recId[], status)
+actionSoapClient.SendMultipleSMS(username, password, toNums[], from, text[], isflash, udh, recId[], status)
 ```
 
 #### نمایش دهنده وضعیت گزارش گیری
