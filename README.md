@@ -89,7 +89,7 @@
 </div>
 
 
-```js
+```vb
 Const  username As String = "username"
 Const  password As String = "password"
 Const  from As String = "5000..."
