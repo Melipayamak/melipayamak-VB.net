@@ -107,7 +107,7 @@ soapClient.SendSimpleSMS(username, password, New String() {toNum}, from, text, i
 از آنجا که وب سرویس ملی پیامک تنها محدود به ارسال پیامک نیست شما از طریق زیر میتوانید به وب سرویس ها دسترسی کامل داشته باشید:
 </div>
 
-```js
+```vb
 ' وب سرویس پیامک
 Dim restClient As New RestClient(username, password)
 Dim soapClient As New SendSoapClient()
@@ -154,7 +154,7 @@ Dim receiveSoapClient As New ReceiveSoapClient()
 
 #### ارسال
 
-```js
+```vb
 restClient.Send(toNum, from, text, isFlash)
 soapClient.SendSimpleSMS(username, password, New String() {toNum}, from, text, isFlash)
 ```
@@ -163,7 +163,7 @@ soapClient.SendSimpleSMS(username, password, New String() {toNum}, from, text, i
 </div>
 
 #### دریافت وضعیت ارسال
-```js
+```vb
 restClient.GetDelivery(recId)
 soapClient.GetDelivery(recId)
 soapClient.GetDeliveries(New Int() {recIds}, username, password)
@@ -171,7 +171,7 @@ soapClient.GetDeliveries(New Int() {recIds}, username, password)
 
 #### لیست پیامک ها
 
-```js
+```vb
 restClient.GetMessages(location, index, count, from)
 soapClient.getMessages(username, password, location, from, index, count)
 'جهت دریافت به صورت رشته ای
@@ -182,83 +182,83 @@ receiveSoapClient.GetUsersMessagesByDate(username, password, location, from, ind
 ```
 
 #### موجودی
-```js
+```vb
 restClient.GetCredit()
 soapClient.GetCredit(username, password)
 ```
 
 #### تعرفه پایه / دریافت قیمت قبل از ارسال
-```js
+```vb
 restClient.GetBasePrice()
 soapClient.GetSmsPrice(username, password, irancellCount, mtnCount, from, text)
 ```
 #### لیست شماره اختصاصی
-```js
+```vb
 usersSoapClient.GetUserNumbers(username, password)
 ```
 
 #### بررسی تعداد پیامک های دریافتی
-```js
+```vb
 soapClient.GetInboxCount(username, password, isRead)
 'پیش فرض خوانده نشده 
 ```
 
 #### ارسال پیامک پیشرفته
-```js
+```vb
 soapClient.SendSms(username, password, to[], from, text, isflash, udh, recId[], status[])
 ```
 
 #### مشاهده مشخصات پیام
-```js
+```vb
 receiveSoapClient.GetMessagesReceptions(username, password, msgId, fromRows)
 ```
 
 
 #### حذف پیام دریافتی
-```js
+```vb
 receiveSoapClient.RemoveMessages2(username, password, location, msgIds)
 ```
 
 
 #### ارسال زماندار
-```js
+```vb
 scheduleSoapClient.AddSchedule(username, password, to, from, text, isflash, scheduleDateTime, period)
 ```
 
 #### ارسال زماندار متناظر
-```js
+```vb
 scheduleSoapClient.AddMultipleSchedule(username, password, to[], from, text[], isflash, scheduleDateTime[], period)
 ```
 
 
 #### ارسال سررسید
-```js
+```vb
 scheduleSoapClient.AddNewUsance(username, password, to, from, text, isflash, scheduleStartDateTime, countRepeat, scheduleEndDateTime, periodType)
 ```
 
 #### مشاهده وضعیت ارسال زماندار
-```js
+```vb
 scheduleSoapClient.GetScheduleStatus(username, password, schId)
 ```
 
 #### حذف پیامک زماندار
-```js
+```vb
 scheduleSoapClient.RemoveSchedule(username, password, schId)
 ```
 
 
 ####  ارسال پیامک همراه با تماس صوتی
-```js
+```vb
 voiceSoapClient.SendSMSWithSpeechText(username, password, smsBody, speechBody, from, to)
 ```
 
 ####  ارسال پیامک همراه با تماس صوتی به صورت زمانبندی
-```js
+```vb
 voiceSoapClient.SendSMSWithSpeechTextBySchduleDate(username, password, smsBody, speechBody, from, to, scheduleDate)
 ```
 
 ####  دریافت وضعیت پیامک همراه با تماس صوتی 
-```js
+```vb
 voiceSoapClient.GetSendSMSWithSpeechTextStatus(username, password, recId)
 ```
 <div dir='rtl'>
@@ -268,71 +268,71 @@ voiceSoapClient.GetSendSMSWithSpeechTextStatus(username, password, recId)
 </div>
 
 #### دریافت شناسه شاخه های بانک شماره
-```js
+```vb
 actionSoapClient.GetBranchs(username, password, owner)
 ```
 
 
 #### اضافه کردن یک بانک شماره جدید
-```js
+```vb
 actionSoapClient.AddBranch(username, password, branchName, owner)
 ```
 
 #### اضافه کردن شماره به بانک
-```js
+```vb
 actionSoapClient.AddNumber(username, password, branchId, mobileNumbers[])
 ```
 
 #### حذف یک بانک
-```js
+```vb
 actionSoapClient.RemoveBranch(username, password, branchId)
 ```
 
 #### ارسال انبوه از طریق بانک
-```js
+```vb
 actionSoapClient.AddBulk(username, password, from, branch, bulkType, title, message, rangeFrom, rangeTo, DateToSend, requestCount, rowFrom)
 ```
 
 #### تعداد شماره های موجود
-```js
+```vb
 actionSoapClient.GetBulkCount(username, password, branch, rangeFrom, rangeTo)
 ```
 
 #### گزارش گیری از ارسال انبوه
-```js
+```vb
 actionSoapClient.GetBulkReceptions(username, password, bulkId, fromRows)
 ```
 
 
 #### تعیین وضعیت ارسال 
-```js
+```vb
 actionSoapClient.GetBulkStatus(username, password, bulkId, sent, failed, status)
 ```
 
 #### تعداد ارسال های امروز
-```js
+```vb
 actionSoapClient.GetTodaySent(username, password)
 ```
 
 #### تعداد ارسال های کل
 
-```js
+```vb
 actionSoapClient.GetTotalSent(username, password)
 ```
 
 #### حذف ارسال منطقه ای
-```js
+```vb
 actionSoapClient.RemoveBulk(username, password, bulkId)
 ```
 
 #### ارسال متناظر
-```js
+```vb
 actionSoapClient.SendMultipleSMS(username, password, to[], from, text[], isflash, udh, recId[], status)
 ```
 
 #### نمایش دهنده وضعیت گزارش گیری
 
-```js
+```vb
 actionSoapClient.UpdateBulkDelivery(username, password, bulkId)
 ```
 <div dir='rtl'>
@@ -342,34 +342,34 @@ actionSoapClient.UpdateBulkDelivery(username, password, bulkId)
 </div>
 
 #### ثبت تیکت جدید
-```js
+```vb
 ticketSoapClient.AddTicket(username, password, title, content, aletWithSms)
 ```
 
 #### جستجو و دریافت تیکت ها
 
-```js
+```vb
 ticketSoapClient.GetReceivedTickets(username, password, ticketOwner, ticketType, keyword)
 ```
 
 #### دریافت تعداد تیکت های کاربران
-```js
+```vb
 ticketSoapClient.GetReceivedTicketsCount(username, password, ticketType)
 ```
 
 #### دریافت تیکت های ارسال شده
-```js
+```vb
 ticketSoapClient.GetSentTickets(username, password, ticketOwner, ticketType, keyword)
 ```
 
 #### دریافت تعداد تیکت های ارسال شده
-```js
+```vb
 ticketSoapClient.GetSentTicketsCount(username, password, ticketType)
 ```
 
 
 #### پاسخگویی به تیکت
-```js
+```vb
 ticketSoapClient.ResponseTicket(username, password, ticketId, type, content, alertWithSms)
 ```
 <div dir='rtl'>
@@ -379,40 +379,40 @@ ticketSoapClient.ResponseTicket(username, password, ticketId, type, content, ale
 </div>
 
 #### اضافه کردن گروه جدید
-```js
+```vb
 contactsSoapClient.AddGroup(username, password, groupName, Descriptions, showToChilds)
 ```
 
 #### اضافه کردن کاربر جدید
-```js
+```vb
 contactsSoapClient.AddContact(username, password, options)
 
 ```
 
 #### بررسی موجود بودن شماره در دفترچه تلفن
-```js
+```vb
 contactsSoapClient.CheckMobileExistInContact(username, password, mobileNumber)
 ```
 
 #### دریافت اطلاعات دفترچه تلفن
-```js
+```vb
 contactsSoapClient.GetContacts(username, password, groupId, keyword, count)
 ```
 #### دریافت گروه ها
-```js
+```vb
 contactsSoapClient.GetGroups(username, password)
 ```
 #### ویرایش مخاطب
-```js
+```vb
 contactsSoapClient.ChangeContact(username, password, options)
 ```
 
 #### حذف مخاطب
-```js
+```vb
 contactsSoapClient.RemoveContact(username, password, mobilenumber)
 ```
 #### دریافت اطلاعات مناسبت های فرد
-```js
+```vb
 contactsSoapClient.GetContactEvents(username, password, contactId)
 ```
 
@@ -423,93 +423,93 @@ contactsSoapClient.GetContactEvents(username, password, contactId)
 </div>
 
 #### ثبت فیش واریزی
-```js
+```vb
 usersSoapClient.AddPayment(username, password, options)
 ```
 
 #### اضافه کردن کاربر جدید در سامانه
-```js
+```vb
 usersSoapClient.AddUser(username, password, options)
 
 ```
 
 #### اضافه کردن کاربر جدید در سامانه(کامل)
-```js
+```vb
 usersSoapClient.AddUserComplete(username, password, options)
 ```
 
 #### اضافه کردن کاربر جدید در سامانه(WithLocation)
-```js
+```vb
 usersSoapClient.AddUserWithLocation(username, password, options)
 ```
 #### بدست آوردن ID کاربر
-```js
+```vb
 usersSoapClient.AuthenticateUser(username, password)
 ```
 #### تغییر اعتبار
-```js
+```vb
 usersSoapClient.ChangeUserCredit(username, password, amount, description, targetUsername, GetTax)
 ```
 
 #### فراموشی رمز عبور
-```js
+```vb
 usersSoapClient.ForgotPassword(username, password, mobileNumber, emailAddress, targetUsername)
 ```
 #### دریافت تعرفه پایه کاربر
-```js
+```vb
 usersSoapClient.GetUserBasePrice(username, password, targetUsername)
 ```
 
 #### دریافت اعتبار کاربر
-```js
+```vb
 usersSoapClient.GetUserCredit(username, password, targetUsername)
 ```
 
 #### دریافت مشخصات کاربر
-```js
+```vb
 usersSoapClient.GetUserDetails(username, password, targetUsername)
 ```
 
 #### دریافت شماره های کاربر
-```js
+```vb
 usersSoapClient.GetUserNumbers(username, password)
 ```
 
 #### دریافت تراکنش های کاربر
-```js
+```vb
 usersSoapClient.GetUserTransactions(username, password, targetUsername, creditType, dateFrom, dateTo, keyword)
 ```
 
 #### دریافت اطلاعات  کاربران
-```js
+```vb
 usersSoapClient.GetUsers(username, password)
 ```
 
 
 #### دریافت اطلاعات  فیلترینگ
-```js
+```vb
 usersSoapClient.HasFilter(username, password, text)
 ```
 
 
 ####  حذف کاربر
-```js
+```vb
 usersSoapClient.RemoveUser(username, password, targetUsername)
 ```
 
 
 #### مشاهده استان ها
-```js
+```vb
 usersSoapClient.GetProvinces(username, password)
 ```
 
 #### مشاهده کد شهرستان 
-```js
+```vb
 usersSoapClient.GetCities(username, password, provinceId)
 ```
 
 
 #### مشاهده تاریخ انقضای کاربر 
-```js
+```vb
 usersSoapClient.GetExpireDate(username, password)
 ```
