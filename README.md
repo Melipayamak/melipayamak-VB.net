@@ -233,7 +233,7 @@ scheduleSoapClient.AddMultipleSchedule(username, password, toNums[], from, text[
 
 #### ارسال سررسید
 ```vb
-scheduleSoapClient.AddNewUsance(username, password, toNum, from, text, isflash, scheduleStartDateTime, countRepeat, scheduleEndDateTime, periodType)
+scheduleSoapClient.AddUsance(username, password, toNum, from, text, isflash, scheduleStartDateTime, repeatAfterDays, scheduleEndDateTime)
 ```
 
 #### مشاهده وضعیت ارسال زماندار
