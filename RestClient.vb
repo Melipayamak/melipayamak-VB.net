@@ -13,6 +13,8 @@ Public Class RestClient
     Private Const getBasePriceOp As String = "GetBasePrice"
 
     Private Const getUserNumbersOp As String = "GetUserNumbers"
+    
+    Private Const sendByBaseNumberOp As String = "BaseServiceNumber"
 
     Private UserName As String
 
@@ -28,6 +30,16 @@ Public Class RestClient
         Dim content = New FormUrlEncodedContent(values)
         Using httpClient = New HttpClient()
             Dim response = httpClient.PostAsync(endpoint & sendOp, content).Result
+            Dim responseString = response.Content.ReadAsStringAsync().Result
+            Return JsonConvert.DeserializeObject(Of RestResponse)(responseString)
+        End Using
+    End Function
+
+    Public Function SendByBaseNumber(ByVal text As String, ByVal to As String, ByVal bodyId As Integer) As RestResponse
+        Dim values = New Dictionary(Of String, String) From {{"username", UserName}, {"password", Password}, {"text", text}, {"to", to}, {"bodyId", bodyId.ToString()}}
+        Dim content = New FormUrlEncodedContent(values)
+        Using httpClient = New HttpClient()
+Dim response = httpClient.PostAsync(endpoint & sendByBaseNumberOp, content).Result
             Dim responseString = response.Content.ReadAsStringAsync().Result
             Return JsonConvert.DeserializeObject(Of RestResponse)(responseString)
         End Using
