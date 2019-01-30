@@ -163,7 +163,7 @@ soapClient.SendSimpleSMS(username, password, New String() {toNum}, from, text, i
 </div>
 
 #### ارسال از خط خدماتی اشتراکی
-```js
+```vb
 restClient.SendByBaseNumber(text, to, bodyId)
 soapClient.SendByBaseNumber2(username, password, text, to, bodyId)
 ```
