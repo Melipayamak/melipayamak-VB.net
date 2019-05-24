@@ -20,9 +20,9 @@ Public Class RestClient
 
     Private Password As String
 
-    Public Sub New(ByVal username As String, ByVal password As String)
-        UserName = username
-        Password = password
+    Public Sub New(ByVal _username As String, ByVal _password As String)
+        UserName = _username
+        Password = _password
     End Sub
 
     Public Function Send(ByVal [to] As String, ByVal from As String, ByVal message As String, ByVal isflash As Boolean) As RestResponse
