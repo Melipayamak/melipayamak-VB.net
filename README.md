@@ -252,7 +252,9 @@ scheduleSoapClient.GetScheduleStatus(username, password, schId)
 scheduleSoapClient.RemoveSchedule(username, password, schId)
 ```
 <div dir='rtl'>
+  
 ### وب سرویس پیامک صوتی
+
 </div>
 
 ####  ارسال پیامک همراه با تماس صوتی
