@@ -251,7 +251,9 @@ scheduleSoapClient.GetScheduleStatus(username, password, schId)
 ```vb
 scheduleSoapClient.RemoveSchedule(username, password, schId)
 ```
-
+<div dir='rtl'>
+### وب سرویس پیامک صوتی
+</div>
 
 ####  ارسال پیامک همراه با تماس صوتی
 ```vb
@@ -267,6 +269,22 @@ voiceSoapClient.SendSMSWithSpeechTextBySchduleDate(username, password, smsBody, 
 ```vb
 voiceSoapClient.GetSendSMSWithSpeechTextStatus(username, password, recId)
 ```
+
+#### تماس انبوه زماندار
+```vb
+voiceSoapClient.SendBulkSpeechText(title, receivers, DateToSend, repeatCount)
+```
+
+#### تماس انبوه زماندار با انتخاب فایل
+```vb
+voiceSoapClient.SendBulkVoiceSMS(title, voiceFileId, receivers, DateToSend, repeatCount)
+```
+
+#### آپلود فایل صوتی
+```vb
+voiceSoapClient.UploadVoiceFile(title, base64StringFile)
+```
+
 <div dir='rtl'>
   
 ### وب سرویس ارسال انبوه/منطقه ای
