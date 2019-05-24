@@ -35,8 +35,8 @@ Public Class RestClient
         End Using
     End Function
 
-    Public Function SendByBaseNumber(ByVal text As String, ByVal to As String, ByVal bodyId As Integer) As RestResponse
-        Dim values = New Dictionary(Of String, String) From {{"username", UserName}, {"password", Password}, {"text", text}, {"to", to}, {"bodyId", bodyId.ToString()}}
+    Public Function SendByBaseNumber(ByVal text As String, ByVal toNum As String, ByVal bodyId As Integer) As RestResponse
+        Dim values = New Dictionary(Of String, String) From {{"username", UserName}, {"password", Password}, {"text", text}, {"to", toNum}, {"bodyId", bodyId.ToString()}}
         Dim content = New FormUrlEncodedContent(values)
         Using httpClient = New HttpClient()
 Dim response = httpClient.PostAsync(endpoint & sendByBaseNumberOp, content).Result
