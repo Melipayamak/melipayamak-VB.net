@@ -1,10 +1,7 @@
-﻿Imports System.Collections.Specialized
-Imports System.Net
-Imports System.Net.Http
-Imports System.Text
+﻿Imports System.Net.Http
 Imports Newtonsoft.Json
 
-Public Class RestClient
+Public Class RestClientAsync
 	Private Const endpoint = "https://rest.payamak-panel.com/api/SendSMS/"
 	Private Const sendOp = "SendSMS"
 	Private Const getDeliveryOp = "GetDeliveries2"
@@ -21,17 +18,17 @@ Public Class RestClient
 		password = password
 	End Sub
 
-	Private Function makeRequest(ByVal values As Dictionary(Of String, String), ByVal op As String) As RestResponse
-		Using client = New WebClient
-			Dim response = client.UploadValues(endpoint & op, values.Aggregate(New NameValueCollection, Function(seed, current)
-																											seed.Add(current.Key, current.Value)
-																											Return seed
-																										End Function))
-			Return JsonConvert.DeserializeObject(Of RestResponse)(Encoding.Default.GetString(response))
+	Private Async Function makeRequestAsync(ByVal values As Dictionary(Of String, String), ByVal op As String) As Task(Of RestResponse)
+		Dim content = New FormUrlEncodedContent(values)
+
+		Using httpClient = New HttpClient
+			Dim response = Await httpClient.PostAsync(endpoint & op, content)
+			Dim responseString = Await response.Content.ReadAsStringAsync
+			Return JsonConvert.DeserializeObject(Of RestResponse)(responseString)
 		End Using
 	End Function
 
-	Public Function Send(ByVal [to] As String, ByVal from As String, ByVal message As String, ByVal isflash As Boolean) As RestResponse
+	Public Async Function SendAsync(ByVal [to] As String, ByVal from As String, ByVal message As String, ByVal isflash As Boolean) As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"username", UserName},
 			{"password", Password},
@@ -40,10 +37,10 @@ Public Class RestClient
 			{"text", message},
 			{"isFlash", isflash.ToString}
 		}
-		Return makeRequest(values, sendOp)
+		Return Await makeRequestAsync(values, sendOp)
 	End Function
 
-	Public Function SendByBaseNumber(ByVal text As String, ByVal [to] As String, ByVal bodyId As Integer) As RestResponse
+	Public Async Function SendByBaseNumberAsync(ByVal text As String, ByVal [to] As String, ByVal bodyId As Integer) As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"username", UserName},
 			{"password", Password},
@@ -51,19 +48,19 @@ Public Class RestClient
 			{"to", [to]},
 			{"bodyId", bodyId.ToString}
 		}
-		Return makeRequest(values, sendByBaseNumberOp)
+		Return Await makeRequestAsync(values, sendByBaseNumberOp)
 	End Function
 
-	Public Function GetDelivery(ByVal recid As Long) As RestResponse
+	Public Async Function GetDeliveryAsync(ByVal recid As Long) As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"UserName", UserName},
 			{"PassWord", Password},
 			{"recID", recid.ToString}
 		}
-		Return makeRequest(values, getDeliveryOp)
+		Return Await makeRequestAsync(values, getDeliveryOp)
 	End Function
 
-	Public Function GetMessages(ByVal location As Integer, ByVal from As String, ByVal index As String, ByVal count As Integer) As RestResponse
+	Public Async Function GetMessagesAsync(ByVal location As Integer, ByVal from As String, ByVal index As String, ByVal count As Integer) As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"UserName", UserName},
 			{"PassWord", Password},
@@ -72,39 +69,30 @@ Public Class RestClient
 			{"Index", index},
 			{"Count", count.ToString}
 		}
-		Return makeRequest(values, getMessagesOp)
+		Return Await makeRequestAsync(values, getMessagesOp)
 	End Function
 
-	Public Function GetCredit() As RestResponse
+	Public Async Function GetCreditAsync() As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"UserName", UserName},
 			{"PassWord", Password}
 		}
-		Return makeRequest(values, getCreditOp)
+		Return Await makeRequestAsync(values, getCreditOp)
 	End Function
 
-	Public Function GetBasePrice() As RestResponse
+	Public Async Function GetBasePriceAsync() As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"UserName", UserName},
 			{"PassWord", Password}
 		}
-		Return makeRequest(values, getBasePriceOp)
+		Return Await makeRequestAsync(values, getBasePriceOp)
 	End Function
 
-	Public Function GetUserNumbers() As RestResponse
+	Public Async Function GetUserNumbersAsync() As Task(Of RestResponse)
 		Dim values = New Dictionary(Of String, String) From {
 			{"UserName", UserName},
 			{"PassWord", Password}
 		}
-		Return makeRequest(values, getUserNumbersOp)
+		Return Await makeRequestAsync(values, getUserNumbersOp)
 	End Function
-End Class
-
-Public Class RestResponse
-
-	Public Property Value As String
-
-	Public Property RetStatus As Integer
-
-	Public Property StrRetStatus As String
 End Class
